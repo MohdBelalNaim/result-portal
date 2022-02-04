@@ -42,8 +42,8 @@ const StudentLogin = () =>{
                         <div className='text-center h5'>Student login</div>
                         <div className='mt-4'>
                             <form onSubmit={login}>
-                                <label htmlFor="" style={{"fontSize":18+"px"}}>Institute email</label>
-                                <input value={enrollment} onChange={e=>setEnrollment(e.target.value)} type="text" className='form-control' placeholder='Email' required/>
+                                <label htmlFor="" style={{"fontSize":18+"px"}}>Institute enrollment number</label>
+                                <input value={enrollment} onChange={e=>setEnrollment(e.target.value)} type="text" className='form-control' placeholder='Enrollment' required/>
                                 <label htmlFor="" className='mt-3' style={{"fontSize":18+"px"}}>Password</label>
                                 <input value={password} onChange={e=>setPassword(e.target.value)} type="password" className='form-control' placeholder='Password' required/>
                                 <button className='btn btn-dark form-control mt-3'>Login</button>
