@@ -25,7 +25,7 @@ const AddResult = () =>{
                         <thead>
                             <tr>
                               <th scope="col">Subject</th>
-                              <th scope="col">Marks</th>
+                              <th scope="col">arks</th>
                             </tr>
                         </thead>
                         <tbody>
