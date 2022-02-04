@@ -1,13 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const StudentLogin = () =>{
 
     const[enrollment,setEnrollment]=useState("")
     const[password,setPassword]=useState("")
 
+    const navigate = useNavigate()
+
     function login(e){
-        e.preventdefault()
+        e.preventDefault()
+        fetch("http://localhost:5000/auth/signin",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                enrollment,
+                password
+            })
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.error){
+                new Swal("Error",data.error,"error")
+            }
+            else{
+                localStorage.setItem("auth",data.token)
+                navigate("/student-home")
+            }
+        })
     }
 
     return(
