@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import AddResult from "./Screens/Add-result";
+import DeleteResult from "./Screens/Delete-result";
 import Home from "./Screens/Home";
 import StudentHome from "./Screens/Student-homepage";
 import StudentLogin from "./Screens/Student-login";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/view-result/:id" element={<StudentResultPage/>}/>
         <Route path="/teacher-home" element={<TeacherHomepage/>}/>
         <Route path="/add-result" element={<AddResult/>}/>
+        <Route path="/delete-result" element={<DeleteResult/>}/>
       </Routes>
     </BrowserRouter>
   );

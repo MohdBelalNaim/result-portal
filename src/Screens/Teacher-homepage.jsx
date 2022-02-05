@@ -19,7 +19,7 @@ const TeacherHomepage = () =>{
                         Teacher dashboard
                         <div>
                             <button className='btn btn-dark form-control mt-4' onClick={()=>navigate("/add-result")}>Add a result</button>
-                            <button className='btn btn-dark form-control mt-4'>Remove a result</button>
+                            <button className='btn btn-dark form-control mt-4' onClick={()=>navigate("/delete-result")}>Remove a result</button>
                         </div>
                     </div>
                 </div>
