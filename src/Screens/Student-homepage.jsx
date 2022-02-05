@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const StudentHome = () =>{
 
@@ -50,11 +50,16 @@ const StudentHome = () =>{
                         <div className='mt-3 border rounded px-3 py-3'>
                             <div>Your results</div>
                             {
+                                results!=""?
                                 results.map(item=>{
                                     return(
-                                        <div className='btn btn-dark form-control mt-3'>{item.exam_name}</div>
+                                        <Link to={`/view-result/${item._id}`}><div className='btn btn-dark form-control mt-3'>{item.exam_name}</div></Link>
                                     )
                                 })
+                                :
+                                <div className='text-center text-light rounded py-2 bg-danger mt-2'>
+                                    No results found !
+                                </div>
                             }
                         </div>
                     </div>

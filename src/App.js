@@ -19,7 +19,7 @@ function App() {
         <Route path="/teacher-login" element={<TeacherLogin/>}/>
         <Route path="/student-registration" element={<StudentRegistration/>}/>
         <Route path="/student-home" element={<StudentHome/>}/>
-        <Route path="/view-result" element={<StudentResultPage/>}/>
+        <Route path="/view-result/:id" element={<StudentResultPage/>}/>
         <Route path="/teacher-home" element={<TeacherHomepage/>}/>
         <Route path="/add-result" element={<AddResult/>}/>
       </Routes>

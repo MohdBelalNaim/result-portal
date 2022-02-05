@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.development';
 
 const AddResult = () =>{
 
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(!localStorage.getItem('teacher-auth')){
+            navigate("/")
+        }
+    })
     const[marks,setMarks] = useState([])
-    
+    const[total,setTotal] = useState("")
+
     const[subject,setSubject]=useState("")
     const[mark,setMark]=useState("")
 
     const[enrollment,setEnrollment]=useState("")
     const[exam_name,setExam_name]=useState("")
+
+    let sum = 0
+
+    useEffect(()=>{
+        marks!= null &&
+        marks.forEach(item=>{
+            sum = parseInt(item.mark)+parseInt(sum)
+        })
+        setTotal(sum)
+    },[marks])
 
     const pushSubject = () =>{
         const data ={
@@ -28,7 +48,8 @@ const AddResult = () =>{
             body:JSON.stringify({
                 exam_name,
                 enrollment,
-                result:marks
+                result:marks,
+                total
             })
         })
         .then(res=>res.json())
@@ -88,9 +109,14 @@ const AddResult = () =>{
 
                             <label className="mt-3" htmlFor="">Marks / 30</label>
                             <input value={mark} onChange={e=>setMark(e.target.value)} type="text" className='form-control'/>
-
+                            
+                            
                             <button className="btn btn-dark mt-3" onClick={()=>pushSubject()}>Push marks</button>
                         </div>
+                        
+                        <label className="mt-3" htmlFor="">Total marks</label>
+                        <input value={total} onChange={e=>setMark(e.target.value)} type="text" className='form-control'/>
+                        
                         <button className="mt-3 btn btn-dark form-control" onClick={()=>pushResult()}>Upload result</button>
                     </div>
                 </div>
